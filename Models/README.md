@@ -5,3 +5,4 @@ Place your trained PyTorch checkpoint here:
 - **Architecture**: EfficientNet-B0 (38 classes)
 
 *Note: Heavy model weights (`*.pth`, `*.pt`, `*.onnx`) are excluded from Git version control via `.gitignore`.*
+
