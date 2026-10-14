@@ -46,3 +46,4 @@ class KnowledgeService:
         return db.query(Disease).filter_by(slug=slug).first()
 
 knowledge_service = KnowledgeService()
+

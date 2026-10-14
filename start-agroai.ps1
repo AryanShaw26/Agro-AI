@@ -15,3 +15,4 @@ Start-Sleep -Seconds 3
 Write-Host "`n[2/2] Starting Next.js Frontend on http://localhost:3000..." -ForegroundColor Green
 Set-Location frontend
 npm run dev
+

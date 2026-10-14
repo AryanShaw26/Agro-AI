@@ -9,3 +9,4 @@ api_router.include_router(predict_router, tags=["Prediction"])
 api_router.include_router(diseases_router, tags=["Diseases & Knowledge Base"])
 api_router.include_router(history_router, tags=["Scan History"])
 api_router.include_router(reports_router, tags=["Reports"])
+

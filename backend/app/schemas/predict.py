@@ -46,3 +46,4 @@ class PredictionResponse(BaseModel):
     knowledge: KnowledgeResponse
     gradcam_image: Optional[str] = None
     image_preview_url: Optional[str] = None
+

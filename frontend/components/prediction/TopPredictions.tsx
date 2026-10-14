@@ -77,3 +77,4 @@ export default function TopPredictions({ topPredictions }: TopPredictionsProps) 
     </div>
   );
 }
+

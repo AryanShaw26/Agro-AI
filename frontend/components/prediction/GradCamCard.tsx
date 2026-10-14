@@ -125,3 +125,4 @@ export default function GradCamCard({ gradcamImage, originalImageSrc, predictedD
     </div>
   );
 }
+

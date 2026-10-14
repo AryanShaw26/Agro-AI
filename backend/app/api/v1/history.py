@@ -75,3 +75,4 @@ def delete_scan_record(scan_id: str, db: Session = Depends(get_db)):
     db.delete(scan)
     db.commit()
     return None
+

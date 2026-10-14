@@ -171,3 +171,4 @@ Accepts `multipart/form-data` with an image file:
 
 ## 📄 License & Agronomic Disclaimer
 AgroAI is designed as an informational screening tool. Predictions do not replace certified agricultural laboratory diagnostics. Always follow chemical safety labels and consult regional agricultural extension agents.
+

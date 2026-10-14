@@ -83,3 +83,4 @@ export interface ScanHistoryRecord {
   image_data_uri?: string | null;
   top_predictions: TopPrediction[];
 }
+

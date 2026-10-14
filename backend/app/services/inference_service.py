@@ -103,3 +103,4 @@ class InferenceService:
         )
 
 inference_service = InferenceService()
+

@@ -19,3 +19,4 @@ class ScanHistoryItem(BaseModel):
 class ScanHistoryListResponse(BaseModel):
     total: int
     scans: List[ScanHistoryItem]
+

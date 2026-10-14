@@ -194,3 +194,4 @@ def generate_pdf_report(prediction_id: str, db: Session) -> io.BytesIO:
     doc.build(story)
     buffer.seek(0)
     return buffer
+

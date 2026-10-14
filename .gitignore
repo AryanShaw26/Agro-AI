@@ -1,0 +1,136 @@
+# ==============================================================================
+# AgroAI Master .gitignore
+# Prevents models, secrets, environment files, local databases, and temporary caches
+# from ever being committed to GitHub.
+# ==============================================================================
+
+# --- Machine Learning Models & Heavy Weights ---
+Models/*.pth
+Models/*.pt
+Models/*.bin
+Models/*.onnx
+Models/*.h5
+Models/*.ckpt
+Models/*.safetensors
+*.pth
+*.pt
+*.bin
+*.onnx
+*.h5
+*.ckpt
+*.safetensors
+*.weights
+!Models/README.md
+
+# --- Secrets, Credentials & Environment Configs ---
+.env
+.env.*
+!.env.example
+*.env
+*.key
+*.pem
+*.cert
+*.crt
+*.pfx
+secrets.json
+serviceAccountKey.json
+
+# --- Local Databases & Storage ---
+*.db
+*.sqlite
+*.sqlite3
+agroai.db
+data/
+uploads/
+storage/
+*.log
+
+# --- Python Artifacts & Virtual Environments ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+.env/
+env.bak/
+venv.bak/
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+nosetests.xml
+coverage.xml
+
+# --- Node.js & Next.js Build Artifacts ---
+node_modules/
+frontend/node_modules/
+.next/
+frontend/.next/
+out/
+frontend/out/
+.vercel
+*.tsbuildinfo
+next-env.d.ts
+
+# NPM / Yarn debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# --- Generated PDF Reports & Temporary Exports ---
+*.pdf
+reports/*.pdf
+scratch/
+
+# --- Operating System & Editor Files ---
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# IDE & Editor folders
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.sublime-workspace
+*.sublime-project
+*.swp
+*.swo
+*~

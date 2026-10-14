@@ -94,3 +94,4 @@ class ModelRegistry:
         return self._adapter
 
 model_registry = ModelRegistry.get_instance()
+

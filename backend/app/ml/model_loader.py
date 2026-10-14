@@ -27,3 +27,4 @@ def load_efficientnet_b0(checkpoint_path: str = None, num_classes: int = 38, dev
     model.to(device)
     model.eval()
     return model, device
+

@@ -29,3 +29,4 @@ class DiseaseDetailResponse(BaseModel):
     preventions: List[str] = []
     treatments: List[TreatmentItem] = []
     references: List[ReferenceItem] = []
+

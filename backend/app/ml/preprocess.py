@@ -34,3 +34,4 @@ def preprocess_image_tensor(image: Image.Image) -> torch.Tensor:
     """
     tensor = inference_transform(image)
     return tensor.unsqueeze(0)
+

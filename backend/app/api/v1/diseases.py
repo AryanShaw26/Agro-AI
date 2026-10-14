@@ -103,3 +103,4 @@ def get_disease_detail(slug: str, db: Session = Depends(get_db)):
             for r in disease.references
         ]
     )
+

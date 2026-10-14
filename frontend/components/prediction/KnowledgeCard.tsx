@@ -79,3 +79,4 @@ export default function KnowledgeCard({ knowledge, diseaseName }: KnowledgeCardP
     </div>
   );
 }
+

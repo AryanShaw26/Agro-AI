@@ -91,3 +91,4 @@ def generate_gradcam_overlay(image: Image.Image, target_class_idx: int = None) -
     finally:
         h1.remove()
         h2.remove()
+

@@ -74,3 +74,4 @@ export default function TreatmentCard({ treatments, safetyNotes }: TreatmentCard
     </div>
   );
 }
+

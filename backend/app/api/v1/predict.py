@@ -99,3 +99,4 @@ def get_prediction_by_id(prediction_id: str, db: Session = Depends(get_db)):
         knowledge=knowledge,
         image_preview_url=scan.image_data_uri
     )
+

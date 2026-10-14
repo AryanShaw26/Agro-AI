@@ -154,3 +154,4 @@ export default function PredictionHero({ result, originalImageSrc, onReset }: Pr
     </div>
   );
 }
+

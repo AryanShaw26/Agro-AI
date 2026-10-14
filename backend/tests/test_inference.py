@@ -83,3 +83,4 @@ def test_diseases_filter_by_crop():
     assert len(diseases) == 10
     for d in diseases:
         assert d["crop"] == "Tomato"
+

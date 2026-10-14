@@ -312,3 +312,4 @@ export default function LeafUpload({ onPredictionComplete, onAnalysisStart, onEr
     </div>
   );
 }
+

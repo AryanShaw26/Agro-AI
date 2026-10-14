@@ -94,3 +94,4 @@ export async function deleteScanRecord(id: string): Promise<void> {
 export function getReportPdfUrl(predictionId: string): string {
   return `${API_BASE}/reports/${predictionId}/pdf`;
 }
+

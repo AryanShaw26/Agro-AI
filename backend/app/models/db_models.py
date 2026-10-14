@@ -89,3 +89,4 @@ class ScanPrediction(Base):
     image_data_uri = Column(Text, nullable=True)
     model_version = Column(String(64), nullable=False)
     processing_time_ms = Column(Float, nullable=False)
+
