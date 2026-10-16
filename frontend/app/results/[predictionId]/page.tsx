@@ -12,6 +12,7 @@ import KnowledgeCard from '@/components/prediction/KnowledgeCard';
 import SymptomsCard from '@/components/prediction/SymptomsCard';
 import PreventionCard from '@/components/prediction/PreventionCard';
 import TreatmentCard from '@/components/prediction/TreatmentCard';
+import GradCamCard from '@/components/prediction/GradCamCard';
 
 export default function PredictionResultPage() {
   const params = useParams();
@@ -100,7 +101,17 @@ export default function PredictionResultPage() {
         </div>
       </div>
 
-      {/* 3. Symptoms, Prevention & Treatments */}
+      {/* 3. Grad-CAM Attention Heatmap Card */}
+      {(result.gradcam?.available || result.gradcam_image) && (
+        <GradCamCard
+          gradcam={result.gradcam}
+          gradcamImage={result.gradcam_image}
+          originalImageSrc={result.image_preview_url || undefined}
+          predictedDisease={result.disease}
+        />
+      )}
+
+      {/* 4. Symptoms, Prevention & Treatments */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <SymptomsCard symptoms={result.knowledge.symptoms} />
         <PreventionCard preventions={result.knowledge.preventions} />

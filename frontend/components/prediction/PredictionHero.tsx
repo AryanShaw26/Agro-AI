@@ -115,9 +115,12 @@ export default function PredictionHero({ result, originalImageSrc, onReset }: Pr
               </div>
 
               <div className="text-right">
-                <span className="text-xs text-[#6B756F] block">Model Checkpoint</span>
-                <span className="text-xs font-mono font-medium text-[#1C231F]">
-                  {result.model_version}
+                <span className="text-xs text-[#6B756F] block">Active Vision Model</span>
+                <span className="text-xs font-mono font-bold text-[#1F694B] block">
+                  {result.model_version.includes('v2') ? 'EfficientNetV2-S' : result.model_version}
+                </span>
+                <span className="text-[10px] text-[#2E8B67] font-semibold">
+                  + Grad-CAM Enabled
                 </span>
               </div>
             </div>

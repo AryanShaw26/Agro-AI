@@ -31,6 +31,16 @@ class KnowledgeResponse(BaseModel):
     treatments: List[TreatmentItem] = []
     references: List[ReferenceItem] = []
 
+class GradCAMMetadata(BaseModel):
+    available: bool
+    target_class: Optional[str] = None
+    target_class_index: Optional[int] = None
+    overlay_url: Optional[str] = None
+    heatmap_url: Optional[str] = None
+    overlay_base64: Optional[str] = None
+    heatmap_base64: Optional[str] = None
+    disclaimer: Optional[str] = "AI explanation of convolutional attention — not diagnostic proof of disease."
+
 class PredictionResponse(BaseModel):
     prediction_id: str
     crop: str
@@ -44,6 +54,6 @@ class PredictionResponse(BaseModel):
     processing_time_ms: float
     top_predictions: List[TopPredictionItem]
     knowledge: KnowledgeResponse
-    gradcam_image: Optional[str] = None
+    gradcam: Optional[GradCAMMetadata] = None
+    gradcam_image: Optional[str] = None  # Backward-compatible overlay field
     image_preview_url: Optional[str] = None
-

@@ -14,7 +14,7 @@ export default function Navbar() {
     { href: '/scan', label: 'AI Scan' },
     { href: '/diseases', label: 'Diseases (38)' },
     { href: '/history', label: 'Scan History' },
-    { href: '/about', label: 'Model 1 Transparency' },
+    { href: '/about', label: 'Model Transparency' },
   ];
 
   return (
@@ -32,7 +32,7 @@ export default function Navbar() {
             <div className="flex items-center gap-1.5">
               <span className="font-bold text-xl tracking-tight text-[#1C231F]">AgroAI</span>
               <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#E7F0EA] text-[#1F694B] border border-[#2E8B67]/20">
-                Model 1
+                EfficientNetV2-S
               </span>
             </div>
             <p className="text-[11px] text-[#6B756F] hidden sm:block tracking-wide">Scan. Understand. Protect.</p>

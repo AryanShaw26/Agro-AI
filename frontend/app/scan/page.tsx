@@ -120,9 +120,10 @@ export default function ScanPage() {
             </div>
           </div>
 
-          {/* 3. Optional Grad-CAM Visual Heatmap Card */}
-          {prediction.gradcam_image && (
+          {/* 3. First-Class Grad-CAM Visual Heatmap Card */}
+          {(prediction.gradcam?.available || prediction.gradcam_image) && (
             <GradCamCard
+              gradcam={prediction.gradcam}
               gradcamImage={prediction.gradcam_image}
               originalImageSrc={originalImageSrc}
               predictedDisease={prediction.disease}

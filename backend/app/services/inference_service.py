@@ -9,9 +9,8 @@ from app.core.config import settings
 from app.ml.preprocess import validate_and_load_image
 from app.ml.model_registry import model_registry
 from app.services.knowledge_service import knowledge_service
-from app.services.gradcam_service import generate_gradcam_overlay
 from app.models.db_models import ScanPrediction
-from app.schemas.predict import PredictionResponse, TopPredictionItem
+from app.schemas.predict import PredictionResponse, TopPredictionItem, GradCAMMetadata
 
 class InferenceService:
     @staticmethod
@@ -20,10 +19,12 @@ class InferenceService:
         db: Session,
         include_gradcam: bool = True
     ) -> PredictionResponse:
+        prediction_id = str(uuid.uuid4())
+
         # 1. Validate & load image
         image = validate_and_load_image(image_bytes)
 
-        # 2. Run inference via active model adapter
+        # 2. Run inference via active model adapter (EfficientNetV2-S)
         adapter = model_registry.get_active_model()
         pred_dict = adapter.predict(image)
 
@@ -35,15 +36,30 @@ class InferenceService:
         # 4. Knowledge Base lookup (No GenAI)
         knowledge = knowledge_service.get_by_raw_class(db, pred_dict["raw_class"])
 
-        # 5. Optional Grad-CAM
-        gradcam_image = None
+        # 5. Integrated Grad-CAM (First-class explainability)
+        gradcam_meta = None
+        gradcam_overlay_b64 = None
         if include_gradcam:
             try:
                 top_class_idx = pred_dict["top_predictions"][0]["class_index"]
-                gradcam_image = generate_gradcam_overlay(image, target_class_idx=top_class_idx)
+                explanation = adapter.explain(image, prediction_id, top_class_idx)
+                
+                gradcam_overlay_b64 = explanation.get("overlay_base64")
+                gradcam_meta = GradCAMMetadata(
+                    available=explanation.get("available", True),
+                    target_class=pred_dict["raw_class"],
+                    target_class_index=top_class_idx,
+                    overlay_url=explanation.get("overlay_url"),
+                    heatmap_url=explanation.get("heatmap_url"),
+                    overlay_base64=gradcam_overlay_b64,
+                    heatmap_base64=explanation.get("heatmap_base64")
+                )
             except Exception as e:
                 print(f"[Grad-CAM Warning] Could not generate Grad-CAM: {e}")
-                gradcam_image = None
+                gradcam_meta = GradCAMMetadata(
+                    available=False,
+                    disclaimer=f"Grad-CAM generation bypassed: {e}"
+                )
 
         # 6. Generate thumbnail for persistence (max 256x256 JPEG)
         thumb = image.copy()
@@ -53,7 +69,6 @@ class InferenceService:
         thumb_uri = f"data:image/jpeg;base64,{base64.b64encode(buf.getvalue()).decode('utf-8')}"
 
         # 7. Persist to database
-        prediction_id = str(uuid.uuid4())
         scan_record = ScanPrediction(
             id=prediction_id,
             crop=pred_dict["crop"],
@@ -98,9 +113,9 @@ class InferenceService:
             processing_time_ms=pred_dict["processing_time_ms"],
             top_predictions=top_pred_items,
             knowledge=knowledge,
-            gradcam_image=gradcam_image,
+            gradcam=gradcam_meta,
+            gradcam_image=gradcam_overlay_b64,
             image_preview_url=thumb_uri
         )
 
 inference_service = InferenceService()
-

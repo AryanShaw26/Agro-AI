@@ -6,9 +6,11 @@ class Settings(BaseSettings):
     PROJECT_NAME: str = "AgroAI Plant Disease Detection Platform"
     API_V1_STR: str = "/api/v1"
     
-    # Model Configuration
-    MODEL_PATH: str = os.getenv("MODEL_PATH", "Models/efficientnet_b0_best.pth")
-    MODEL_VERSION: str = os.getenv("MODEL_VERSION", "efficientnet-b0-v1")
+    # Model Configuration (EfficientNetV2-S + Metadata Contract)
+    MODEL_METADATA_PATH: str = os.getenv("MODEL_METADATA_PATH", "Models/efficientnetv2_s_metadata.json")
+    MODEL_PATH: str = os.getenv("MODEL_PATH", "Models/efficientnetv2_s_38class_gradcam_best.pth")
+    FALLBACK_MODEL_PATH: str = os.getenv("FALLBACK_MODEL_PATH", "Models/efficientnet_b0_best.pth")
+    MODEL_VERSION: str = os.getenv("MODEL_VERSION", "efficientnetv2-s-gradcam-v1")
     CONFIDENCE_THRESHOLD: float = float(os.getenv("CONFIDENCE_THRESHOLD", "0.70"))
     
     # Database

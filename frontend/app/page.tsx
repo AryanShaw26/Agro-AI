@@ -29,7 +29,7 @@ export default function HomePage() {
               {/* Eyebrow badge */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E7F0EA] border border-[#2E8B67]/20 text-xs font-semibold text-[#1F694B]">
                 <Sparkles className="w-3.5 h-3.5 text-[#D6A434]" />
-                <span>Model 1: EfficientNet-B0 Plant Disease Classifier</span>
+                <span>EfficientNetV2-S + Integrated Grad-CAM</span>
               </div>
 
               {/* Display Headline */}
@@ -130,11 +130,11 @@ export default function HomePage() {
                 <span className="text-[10px] text-[#A0A8A3] uppercase">Classes</span>
               </div>
               <div>
-                <span className="text-lg font-extrabold text-[#D6A434] block">224px</span>
+                <span className="text-lg font-extrabold text-[#D6A434] block">384px</span>
                 <span className="text-[10px] text-[#A0A8A3] uppercase">Resolution</span>
               </div>
               <div>
-                <span className="text-lg font-extrabold text-[#2E8B67] block">&lt;200ms</span>
+                <span className="text-lg font-extrabold text-[#2E8B67] block">&lt;220ms</span>
                 <span className="text-[10px] text-[#A0A8A3] uppercase">Inference</span>
               </div>
             </div>
@@ -146,16 +146,16 @@ export default function HomePage() {
       <section className="bento-card p-6 bg-white">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           <div className="space-y-1">
-            <span className="text-2xl font-extrabold text-[#1F694B]">EfficientNet-B0</span>
+            <span className="text-2xl font-extrabold text-[#1F694B]">EfficientNetV2-S</span>
             <p className="text-xs text-[#6B756F]">Production Vision Backbone</p>
           </div>
           <div className="space-y-1">
-            <span className="text-2xl font-extrabold text-[#1F694B]">99.43%</span>
-            <p className="text-xs text-[#6B756F]">Test Macro Accuracy</p>
+            <span className="text-2xl font-extrabold text-[#1F694B]">99.58%</span>
+            <p className="text-xs text-[#6B756F]">Benchmark Accuracy</p>
           </div>
           <div className="space-y-1">
-            <span className="text-2xl font-extrabold text-[#1F694B]">Zero GenAI</span>
-            <p className="text-xs text-[#6B756F]">No Hallucinated Advice</p>
+            <span className="text-2xl font-extrabold text-[#1F694B]">Integrated Grad-CAM</span>
+            <p className="text-xs text-[#6B756F]">Attention Visualizer</p>
           </div>
           <div className="space-y-1">
             <span className="text-2xl font-extrabold text-[#1F694B]">100% Verified</span>

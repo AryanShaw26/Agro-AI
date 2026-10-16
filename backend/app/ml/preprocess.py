@@ -1,17 +1,26 @@
 import io
+from typing import List, Tuple
 from PIL import Image
 import torch
 import torchvision.transforms as transforms
 
-# Standard ImageNet normalization matching training
-IMAGENET_MEAN = [0.485, 0.456, 0.406]
-IMAGENET_STD = [0.229, 0.224, 0.225]
+def build_metadata_transforms(
+    image_size: List[int],
+    mean: List[float],
+    std: List[float]
+) -> transforms.Compose:
+    """
+    Constructs torchvision preprocessing pipeline dynamically driven by metadata contract.
+    """
+    size_tuple = (image_size[0], image_size[1]) if len(image_size) == 2 else (image_size[0], image_size[0])
+    return transforms.Compose([
+        transforms.Resize(size_tuple),
+        transforms.ToTensor(),
+        transforms.Normalize(mean=mean, std=std)
+    ])
 
-inference_transform = transforms.Compose([
-    transforms.Resize((224, 224)),
-    transforms.ToTensor(),
-    transforms.Normalize(mean=IMAGENET_MEAN, std=IMAGENET_STD)
-])
+# Default fallback transforms (ImageNet standard)
+default_transform = build_metadata_transforms([384, 384], [0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
 
 def validate_and_load_image(image_bytes: bytes) -> Image.Image:
     """
@@ -28,10 +37,10 @@ def validate_and_load_image(image_bytes: bytes) -> Image.Image:
     except Exception as e:
         raise ValueError(f"Invalid or corrupted image format: {str(e)}")
 
-def preprocess_image_tensor(image: Image.Image) -> torch.Tensor:
+def preprocess_image_tensor(image: Image.Image, transform: transforms.Compose = None) -> torch.Tensor:
     """
-    Prepares tensor shape [1, 3, 224, 224] with ImageNet normalization.
+    Prepares tensor [1, 3, H, W] with metadata-driven normalization.
     """
-    tensor = inference_transform(image)
+    tf = transform or default_transform
+    tensor = tf(image)
     return tensor.unsqueeze(0)
-

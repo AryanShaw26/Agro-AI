@@ -1,14 +1,16 @@
 import io
-from fastapi import APIRouter, UploadFile, File, Form, Depends, HTTPException, status
+import json
+from fastapi import APIRouter, UploadFile, File, Form, Depends, HTTPException, status, Response
+from fastapi.responses import Response
 from sqlalchemy.orm import Session
 
 from app.core.config import settings
 from app.db.session import get_db
-from app.schemas.predict import PredictionResponse
+from app.schemas.predict import PredictionResponse, TopPredictionItem, GradCAMMetadata
 from app.services.inference_service import inference_service
 from app.models.db_models import ScanPrediction
 from app.services.knowledge_service import knowledge_service
-import json
+from app.ml.model_registry import model_registry
 
 router = APIRouter()
 
@@ -19,8 +21,8 @@ async def predict_plant_disease(
     db: Session = Depends(get_db)
 ):
     """
-    Classifies uploaded plant leaf image into one of 38 classes using Model 1 (EfficientNet-B0)
-    and retrieves verified knowledge base content.
+    Classifies uploaded plant leaf image into one of 38 classes using active model (EfficientNetV2-S),
+    generates first-class Grad-CAM attention visualizations, and retrieves verified knowledge.
     """
     # 1. Validate file extension
     filename = image.filename or "unknown.jpg"
@@ -71,7 +73,6 @@ def get_prediction_by_id(prediction_id: str, db: Session = Depends(get_db)):
     knowledge = knowledge_service.get_by_raw_class(db, scan.raw_class)
     top_preds = json.loads(scan.top_predictions_json)
 
-    from app.schemas.predict import TopPredictionItem
     top_pred_items = [
         TopPredictionItem(
             crop=p["crop"],
@@ -97,6 +98,39 @@ def get_prediction_by_id(prediction_id: str, db: Session = Depends(get_db)):
         processing_time_ms=scan.processing_time_ms,
         top_predictions=top_pred_items,
         knowledge=knowledge,
-        image_preview_url=scan.image_data_uri
+        image_preview_url=scan.image_data_uri,
+        gradcam=GradCAMMetadata(
+            available=True,
+            target_class=scan.raw_class,
+            overlay_url=f"/api/v1/predictions/{scan.id}/gradcam",
+            heatmap_url=f"/api/v1/predictions/{scan.id}/gradcam/heatmap"
+        )
     )
 
+
+@router.get("/predictions/{prediction_id}/gradcam")
+def get_prediction_gradcam_overlay(prediction_id: str):
+    """
+    Returns the Grad-CAM blended overlay artifact as an image/jpeg stream.
+    """
+    adapter = model_registry.get_active_model()
+    if hasattr(adapter, "gradcam_service") and adapter.gradcam_service:
+        img_bytes = adapter.gradcam_service.get_artifact(prediction_id, "overlay")
+        if img_bytes:
+            return Response(content=img_bytes, media_type="image/jpeg")
+
+    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Grad-CAM overlay artifact expired or not found")
+
+
+@router.get("/predictions/{prediction_id}/gradcam/heatmap")
+def get_prediction_gradcam_heatmap(prediction_id: str):
+    """
+    Returns the raw Grad-CAM Jet heatmap artifact as an image/jpeg stream.
+    """
+    adapter = model_registry.get_active_model()
+    if hasattr(adapter, "gradcam_service") and adapter.gradcam_service:
+        img_bytes = adapter.gradcam_service.get_artifact(prediction_id, "heatmap")
+        if img_bytes:
+            return Response(content=img_bytes, media_type="image/jpeg")
+
+    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Grad-CAM heatmap artifact expired or not found")

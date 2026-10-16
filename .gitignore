@@ -21,6 +21,8 @@ Models/*.safetensors
 *.safetensors
 *.weights
 !Models/README.md
+!Models/efficientnetv2_s_metadata.json
+!Models/*.json
 
 # --- Secrets, Credentials & Environment Configs ---
 .env

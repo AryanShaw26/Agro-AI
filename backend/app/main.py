@@ -16,15 +16,15 @@ async def lifespan(app: FastAPI):
     # Seed knowledge base if not already seeded
     seed_database()
     # Pre-warm model in registry
-    print("[AgroAI] Pre-loading EfficientNet-B0 model weights...")
+    print("[AgroAI] Loading active model (EfficientNetV2-S + Grad-CAM)...")
     model_registry.initialize()
     print("[AgroAI] Startup sequence complete.")
     yield
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
-    description="AgroAI Plant Disease Detection Platform — Model 1 EfficientNet-B0 + Verified Agricultural Knowledge Base (No GenAI)",
-    version="1.0.0",
+    description="AgroAI Plant Disease Detection Platform — EfficientNetV2-S + Integrated Grad-CAM + Verified Agricultural Knowledge Base (No GenAI)",
+    version="2.0.0",
     docs_url="/docs",
     redoc_url="/redoc",
     lifespan=lifespan
@@ -52,20 +52,25 @@ app.include_router(api_router, prefix=settings.API_V1_STR)
 
 @app.get("/health", tags=["Health"])
 def health_check():
+    active_adapter = model_registry.get_active_model()
     return {
         "status": "healthy",
         "service": "AgroAI Inference & Knowledge API",
-        "model_version": settings.MODEL_VERSION,
+        "model_name": active_adapter.model_name,
+        "model_version": active_adapter.version,
         "classes_supported": 38,
+        "gradcam_integrated": True,
         "genai_enabled": False
     }
 
 @app.get("/", tags=["Root"])
 def root():
+    active_adapter = model_registry.get_active_model()
     return {
         "message": "Welcome to AgroAI Plant Disease Detection API",
         "docs": "/docs",
         "api_v1": settings.API_V1_STR,
-        "model": "Model 1: EfficientNet-B0",
+        "active_model": active_adapter.model_name,
+        "model_version": active_adapter.version,
         "philosophy": "Scan. Understand. Protect. (No GenAI)"
     }

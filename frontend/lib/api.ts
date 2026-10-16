@@ -1,4 +1,4 @@
-import { PredictionResult, DiseaseListItem, DiseaseDetail, ScanHistoryRecord } from '@/types';
+import { PredictionResult, DiseaseListItem, DiseaseDetail, ScanHistoryRecord, ModelInfo } from '@/types';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://127.0.0.1:8000/api/v1';
 
@@ -30,6 +30,14 @@ export async function getPredictionById(id: string): Promise<PredictionResult> {
   const res = await fetch(`${API_BASE}/predictions/${id}`);
   if (!res.ok) {
     throw new Error(`Failed to load prediction ${id}`);
+  }
+  return res.json();
+}
+
+export async function getModelInfo(): Promise<ModelInfo> {
+  const res = await fetch(`${API_BASE}/model`);
+  if (!res.ok) {
+    throw new Error('Failed to load active model metadata');
   }
   return res.json();
 }
@@ -95,3 +103,10 @@ export function getReportPdfUrl(predictionId: string): string {
   return `${API_BASE}/reports/${predictionId}/pdf`;
 }
 
+export function getGradcamOverlayUrl(predictionId: string): string {
+  return `${API_BASE}/predictions/${predictionId}/gradcam`;
+}
+
+export function getGradcamHeatmapUrl(predictionId: string): string {
+  return `${API_BASE}/predictions/${predictionId}/gradcam/heatmap`;
+}

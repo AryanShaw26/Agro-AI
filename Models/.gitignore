@@ -1,0 +1,36 @@
+# ==============================================================================
+# AgroAI Models Directory .gitignore
+# Explicitly ignores large neural network binary checkpoints and weights,
+# while tracking architectural metadata contracts and documentation.
+# ==============================================================================
+
+# Ignore all model weight checkpoint formats
+*.pth
+*.pt
+*.bin
+*.onnx
+*.safetensors
+*.h5
+*.hdf5
+*.ckpt
+*.weights
+*.pkl
+*.pickle
+*.pb
+*.tflite
+
+# Ignore temporary and downloaded model files
+*.tar.gz
+*.zip
+*.tmp
+*.download
+
+# Ignore training artifacts, runs, and logs
+runs/
+logs/
+checkpoints/
+
+# Tracking whitelist: ALWAYS track metadata contracts and documentation
+!README.md
+!*.json
+!efficientnetv2_s_metadata.json

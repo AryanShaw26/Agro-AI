@@ -37,19 +37,20 @@ export default function Footer() {
 
           {/* Model Transparency */}
           <div>
-            <h4 className="font-semibold text-white text-sm uppercase tracking-wider mb-4">Model 1 Specs</h4>
+            <h4 className="font-semibold text-white text-sm uppercase tracking-wider mb-4">Production Model</h4>
             <ul className="space-y-2.5 text-xs text-[#A0A8A3]">
               <li className="flex items-center gap-2">
                 <Cpu className="w-3.5 h-3.5 text-[#D6A434]" />
-                <span>Architecture: EfficientNet-B0</span>
+                <span>Model: EfficientNetV2-S</span>
               </li>
               <li className="flex items-center gap-2">
                 <Database className="w-3.5 h-3.5 text-[#2E8B67]" />
-                <span>Validation Macro F1: 99.42%</span>
+                <span>Test Accuracy: 99.58%</span>
               </li>
-              <li>Test Accuracy: 99.43%</li>
-              <li>Input Resolution: 224×224 RGB ImageNet</li>
-              <li>Parameters: 4,056,226</li>
+              <li>Grad-CAM Layer: features.7</li>
+              <li>Resolution: 384×384 RGB</li>
+              <li>Classes: 38 PlantVillage Conditions</li>
+              <li>Rollback Safety: Archived B0 Retained</li>
             </ul>
           </div>
 

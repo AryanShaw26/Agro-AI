@@ -32,6 +32,17 @@ export interface KnowledgeData {
   references: ReferenceItem[];
 }
 
+export interface GradCAMMetadata {
+  available: boolean;
+  target_class?: string | null;
+  target_class_index?: number | null;
+  overlay_url?: string | null;
+  heatmap_url?: string | null;
+  overlay_base64?: string | null;
+  heatmap_base64?: string | null;
+  disclaimer?: string | null;
+}
+
 export interface PredictionResult {
   prediction_id: string;
   crop: string;
@@ -45,6 +56,7 @@ export interface PredictionResult {
   processing_time_ms: number;
   top_predictions: TopPrediction[];
   knowledge: KnowledgeData;
+  gradcam?: GradCAMMetadata | null;
   gradcam_image?: string | null;
   image_preview_url?: string | null;
 }
@@ -84,3 +96,17 @@ export interface ScanHistoryRecord {
   top_predictions: TopPrediction[];
 }
 
+export interface ModelInfo {
+  status: string;
+  model_name: string;
+  model_version: string;
+  metadata: {
+    architecture: string;
+    variant: string;
+    num_classes: number;
+    image_size: number[];
+    gradcam_layer: string;
+    metrics: Record<string, any>;
+    explainability: Record<string, any>;
+  };
+}
