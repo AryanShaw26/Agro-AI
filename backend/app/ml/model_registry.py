@@ -54,7 +54,7 @@ class EfficientNetV2SGradCAMAdapter(ModelAdapter):
 
         self.metadata: ModelMetadata = load_and_validate_metadata(meta_path)
         self._version = self.metadata.model_version
-        self._model_name = self.metadata.model_name
+        self._model_name = self.metadata.display_name or self.metadata.model_name
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
         # Build metadata-driven transforms

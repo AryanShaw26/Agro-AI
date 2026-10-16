@@ -15,3 +15,4 @@ def get_active_model_info():
         "model_version": adapter.version,
         "metadata": adapter.metadata_dict
     }
+

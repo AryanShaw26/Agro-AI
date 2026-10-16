@@ -1,6 +1,6 @@
 # ==============================================================================
 # AgroAI Backend .gitignore
-# Prevents Python bytecode, local databases, secrets, uploads, and generated reports
+# Prevents Python bytecode, local databases, secrets, uploads, and heavy weights
 # from ever being committed to GitHub.
 # ==============================================================================
 
@@ -9,6 +9,18 @@ __pycache__/
 *.py[cod]
 *$py.class
 *.so
+
+# Model binary checkpoints
+*.pth
+*.pt
+*.bin
+*.onnx
+*.safetensors
+*.h5
+app/models/*.pth
+app/models/*.pt
+app/models/*.bin
+!app/models/*.json
 
 # Environments & Secrets
 .env

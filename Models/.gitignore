@@ -34,3 +34,4 @@ checkpoints/
 !README.md
 !*.json
 !efficientnetv2_s_metadata.json
+

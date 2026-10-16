@@ -1,15 +1,10 @@
 {
-  "model_name": "EfficientNetV2-S Plant Disease Classifier with Integrated Grad-CAM",
-  "model_version": "efficientnetv2-s-gradcam-v1",
-  "architecture": "efficientnet_v2_s",
-  "variant": "s",
-  "framework": "torchvision",
+  "model_name": "tf_efficientnetv2_s.in1k",
+  "display_name": "AgroAI EfficientNetV2-S 38-Class Plant Disease Model",
   "num_classes": 38,
-  "image_size": [384, 384],
-  "mean": [0.485, 0.456, 0.406],
-  "std": [0.229, 0.224, 0.225],
-  "gradcam_layer": "features.7",
-  "checkpoint_file": "efficientnetv2_s_38class_gradcam_best.pth",
+  "image_size": 260,
+  "checkpoint": "/home/aryan/projects/AgroAI/models/efficientnetv2_s_38class_gradcam_best.pth",
+  "gradcam_target": "conv_head",
   "class_names": [
     "Apple___Apple_scab",
     "Apple___Black_rot",
@@ -50,20 +45,7 @@
     "Tomato___Tomato_mosaic_virus",
     "Tomato___healthy"
   ],
-  "metrics": {
-    "test_accuracy": 0.9958,
-    "test_macro_f1": 0.9936,
-    "test_macro_precision": 0.9918,
-    "test_macro_recall": 0.9954,
-    "validation_macro_f1": 0.9952,
-    "training_epochs": 12,
-    "dataset": "PlantVillage (54,284 clean images, 38 classes)"
-  },
-  "explainability": {
-    "method": "Grad-CAM",
-    "target_layer": "features.7",
-    "colormap": "JET",
-    "alpha_blend": 0.45,
-    "disclaimer": "AI visual explanation of convolutional feature activation; not diagnostic proof of disease."
-  }
+  "best_validation_f1": 0.9954754978665532,
+  "test_accuracy_tta": 0.9972370602320869,
+  "test_macro_f1_tta": 0.9953779592206438
 }

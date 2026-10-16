@@ -12,7 +12,12 @@ def build_metadata_transforms(
     """
     Constructs torchvision preprocessing pipeline dynamically driven by metadata contract.
     """
-    size_tuple = (image_size[0], image_size[1]) if len(image_size) == 2 else (image_size[0], image_size[0])
+    if isinstance(image_size, int):
+        size_tuple = (image_size, image_size)
+    elif len(image_size) == 2:
+        size_tuple = (image_size[0], image_size[1])
+    else:
+        size_tuple = (image_size[0], image_size[0])
     return transforms.Compose([
         transforms.Resize(size_tuple),
         transforms.ToTensor(),
