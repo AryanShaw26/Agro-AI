@@ -233,7 +233,7 @@ class ModelRegistry:
     def initialize(self):
         """
         Initializes the active model adapter (EfficientNetV2-S).
-        Safely rolls back to EfficientNet-B0 if V2-S initialization encounters missing files.
+        Safely rolls back to EfficientNet-B0 only if fallback checkpoint exists on disk.
         """
         if self._adapter is None:
             try:
@@ -241,14 +241,16 @@ class ModelRegistry:
                 self._adapter = EfficientNetV2SGradCAMAdapter()
                 print(f"[ModelRegistry] Active model initialized: {self._adapter.model_name} (Version: {self._adapter.version})")
             except Exception as e:
-                print(f"[ModelRegistry WARNING] Could not load EfficientNetV2-S: {e}")
-                print(f"[ModelRegistry] Rolling back to archived EfficientNet-B0 model...")
-                try:
-                    self._adapter = EfficientNetB0Adapter()
-                    print(f"[ModelRegistry] Rollback successful: Active model is {self._adapter.model_name}")
-                except Exception as rollback_err:
-                    print(f"[ModelRegistry CRITICAL] Rollback also failed: {rollback_err}")
-                    raise rollback_err
+                print(f"[ModelRegistry ERROR] Could not load EfficientNetV2-S: {e}")
+                if settings.FALLBACK_MODEL_PATH and os.path.exists(settings.FALLBACK_MODEL_PATH):
+                    print(f"[ModelRegistry] Rolling back to archived EfficientNet-B0 model at {settings.FALLBACK_MODEL_PATH}...")
+                    try:
+                        self._adapter = EfficientNetB0Adapter()
+                        print(f"[ModelRegistry] Rollback successful: Active model is {self._adapter.model_name}")
+                        return
+                    except Exception as rollback_err:
+                        print(f"[ModelRegistry CRITICAL] Rollback also failed: {rollback_err}")
+                raise e
 
     def get_active_model(self) -> ModelAdapter:
         if self._adapter is None:
@@ -256,7 +258,9 @@ class ModelRegistry:
         return self._adapter
 
     def switch_to_rollback_b0(self):
-        """Manual rollback trigger."""
+        """Manual rollback trigger (only if fallback model exists)."""
+        if not settings.FALLBACK_MODEL_PATH or not os.path.exists(settings.FALLBACK_MODEL_PATH):
+            raise FileNotFoundError("No archived B0 fallback checkpoint found on disk.")
         self._adapter = EfficientNetB0Adapter()
         return self._adapter
 
