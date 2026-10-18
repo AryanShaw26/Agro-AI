@@ -15,7 +15,7 @@ export default function PreventionCard({ preventions }: PreventionCardProps) {
           <div className="w-8 h-8 rounded-xl bg-[#E7F0EA] flex items-center justify-center text-[#1F694B]">
             <Shield className="w-4 h-4" />
           </div>
-          <h3 className="font-bold text-base text-[#1C231F]">Prevention & Cultural Care</h3>
+          <h3 className="font-bold text-base text-[#1C231F]">Disease Care & Prevention</h3>
         </div>
 
         <p className="text-xs text-[#6B756F] mb-4">

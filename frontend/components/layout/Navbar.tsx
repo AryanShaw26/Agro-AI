@@ -12,6 +12,7 @@ export default function Navbar() {
   const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/scan', label: 'AI Scan' },
+    { href: '/weather', label: 'Weather Advisory' },
     { href: '/diseases', label: 'Diseases (38)' },
     { href: '/history', label: 'Scan History' },
     { href: '/about', label: 'Model Transparency' },

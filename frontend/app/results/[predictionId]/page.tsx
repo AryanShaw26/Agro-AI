@@ -13,6 +13,7 @@ import SymptomsCard from '@/components/prediction/SymptomsCard';
 import PreventionCard from '@/components/prediction/PreventionCard';
 import TreatmentCard from '@/components/prediction/TreatmentCard';
 import GradCamCard from '@/components/prediction/GradCamCard';
+import WeatherSection from '@/components/weather/WeatherSection';
 
 export default function PredictionResultPage() {
   const params = useParams();
@@ -120,6 +121,9 @@ export default function PredictionResultPage() {
           safetyNotes={result.knowledge.safety_notes}
         />
       </div>
+
+      {/* 5. Environmental Weather Intelligence (Independent Advisory Layer) */}
+      <WeatherSection />
     </div>
   );
 }

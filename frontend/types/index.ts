@@ -110,3 +110,5 @@ export interface ModelInfo {
     explainability: Record<string, any>;
   };
 }
+
+export * from './weather';

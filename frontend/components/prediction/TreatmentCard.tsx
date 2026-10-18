@@ -18,7 +18,7 @@ export default function TreatmentCard({ treatments, safetyNotes }: TreatmentCard
             <div className="w-8 h-8 rounded-xl bg-[#E7F0EA] flex items-center justify-center text-[#1F694B]">
               <Pill className="w-4 h-4" />
             </div>
-            <h3 className="font-bold text-base text-[#1C231F]">Verified Treatment Options</h3>
+            <h3 className="font-bold text-base text-[#1C231F]">Disease Treatment / Care</h3>
           </div>
           <span className="text-[11px] font-semibold text-[#6B756F] bg-[#F7F5EE] px-2.5 py-0.5 rounded-full border border-[rgba(28,35,31,0.06)]">
             Verified Knowledge Only

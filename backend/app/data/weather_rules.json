@@ -1,0 +1,197 @@
+[
+  {
+    "id": "heat_stress_high",
+    "hazard": "heat_stress",
+    "severity": "HIGH",
+    "conditions": {
+      "temperature_min": 38.0
+    },
+    "explanation": "Extremely high ambient temperature (≥38°C) exceeds optimal physiological thermal ranges for most crops.",
+    "possible_crop_consequence": "Acute plant heat shock, severe leaf desiccation, pollen sterility, and rapid depletion of root-zone moisture reserves.",
+    "actions": [
+      "Prioritize early morning or post-sunset deep irrigation to replenish transpiration losses without scalding",
+      "Avoid daytime overhead sprinkling which can exacerbate foliar heat scorch and evaporation",
+      "Deploy protective shade cloth or protective reflective particle films where agronomically applicable",
+      "Suspend fertilizer and pesticide applications during extreme heat hours to prevent chemical burn"
+    ],
+    "limitations": "Thermal thresholds reflect regional extension benchmarks; specific crop cultivars and maturity stages exhibit variable heat tolerance.",
+    "source": "FAO Crop Water Management & USDA Agricultural Research Service Heat Stress Guidelines"
+  },
+  {
+    "id": "heat_stress_moderate",
+    "hazard": "heat_stress",
+    "severity": "MODERATE",
+    "conditions": {
+      "temperature_min": 35.0,
+      "temperature_max": 37.9
+    },
+    "explanation": "High ambient temperature (35°C–38°C) substantially elevates crop transpiration demand.",
+    "possible_crop_consequence": "Mid-day wilting, accelerated evapotranspiration, blossom drop in fruiting crops, and temporary photosynthetic shutdown.",
+    "actions": [
+      "Ensure regular soil moisture monitoring and avoid deficit periods in flowering crops",
+      "Schedule irrigation in cooler morning windows to reduce transpirational stress",
+      "Maintain organic soil mulches to buffer root temperature and suppress surface evaporation"
+    ],
+    "limitations": "Field microclimates may exceed ambient station temperatures by 2–4°C in unshaded canopies.",
+    "source": "University of California IPM Agricultural Weather Guidelines"
+  },
+  {
+    "id": "excessive_wetness_high",
+    "hazard": "excessive_wetness",
+    "severity": "HIGH",
+    "conditions": {
+      "rainfall_min": 25.0
+    },
+    "explanation": "Heavy torrential rainfall (≥25 mm) creates severe saturated soil conditions and ponding in fields.",
+    "possible_crop_consequence": "Severe root-zone hypoxia (oxygen deprivation), nutrient leaching, soil erosion, and mechanical lodging of delicate plants.",
+    "actions": [
+      "Immediately open, clear, and reinforce field drainage furrows to divert standing water",
+      "Avoid moving heavy tractors or foot traffic in waterlogged rows to prevent deep soil compaction",
+      "Inspect exposed root systems once waters drain and apply emergency stabilization stakes if lodged"
+    ],
+    "limitations": "Actual waterlogging severity is heavily governed by soil infiltration rate, soil texture, and field topography.",
+    "source": "Penn State Extension Field Crop Waterlogging & Drainage Protocols"
+  },
+  {
+    "id": "excessive_wetness_moderate",
+    "hazard": "excessive_wetness",
+    "severity": "MODERATE",
+    "conditions": {
+      "rainfall_min": 10.0,
+      "rainfall_max": 24.9
+    },
+    "explanation": "Substantial precipitation (10–25 mm) saturates the upper soil profile and keeps foliage continually wet.",
+    "possible_crop_consequence": "Temporary root respiration stress, splash dispersal of soil-borne microbes, and extended leaf wetness duration.",
+    "actions": [
+      "Ensure field drainage channels allow unobstructed water evacuation away from crop beds",
+      "Allow soil surface to dry before conducting cultivation or weeding operations",
+      "Monitor low-lying crop rows for early signs of standing water stress"
+    ],
+    "limitations": "Precipitation volume represents weather station rainfall; local soil absorption capacity determines saturation.",
+    "source": "USDA Natural Resources Conservation Service (NRCS) Soil Management Guidelines"
+  },
+  {
+    "id": "humid_disease_favorable",
+    "hazard": "humid_disease_favorable",
+    "severity": "MODERATE",
+    "conditions": {
+      "humidity_min": 80,
+      "temperature_min": 18.0,
+      "temperature_max": 30.0
+    },
+    "explanation": "Prolonged high relative humidity (≥80% RH) in warm moderate temperatures creates extended moisture on leaf surfaces.",
+    "possible_crop_consequence": "Sustained canopy wetness increases environmental pressure that can favor fungal sporulation and bacterial proliferation on susceptible plants.",
+    "actions": [
+      "Follow verified moisture-management practices and avoid unnecessary prolonged leaf wetness",
+      "Avoid overhead sprinkler irrigation; irrigate strictly at the soil line early in the day",
+      "Promote air circulation through canopy pruning, proper plant spacing, and active weed removal",
+      "Routinely scout lower leaf surfaces and dense foliage areas after sustained humid periods"
+    ],
+    "limitations": "Atmospheric humidity is an environmental indicator; disease development requires the biological presence of viable pathogen inoculum.",
+    "source": "Cornell Cooperative Extension & UC IPM Plant Disease Environmental Guides"
+  },
+  {
+    "id": "wind_damage_high",
+    "hazard": "wind_damage",
+    "severity": "HIGH",
+    "conditions": {
+      "wind_speed_min": 17.2
+    },
+    "explanation": "Gale-force winds (≥17.2 m/s / ≥62 km/h) exert severe aerodynamic drag and mechanical shear stress on crop canopies.",
+    "possible_crop_consequence": "Stem snapping, severe crop lodging, structural trellis damage, flower abortion, and premature fruit drop.",
+    "actions": [
+      "Inspect and reinforce crop support structures, trellising wires, and greenhouse coverings",
+      "Postpone all foliar chemical applications due to severe drift hazard and regulatory safety violations",
+      "Inspect fields post-event to remove broken branches and sanitize torn tissue to limit secondary infection"
+    ],
+    "limitations": "Damage severity depends on crop stature, canopy density, and whether natural or artificial windbreaks are present.",
+    "source": "USDA Agricultural Research Service Wind Hazard Standards"
+  },
+  {
+    "id": "wind_damage_moderate",
+    "hazard": "wind_damage",
+    "severity": "MODERATE",
+    "conditions": {
+      "wind_speed_min": 10.8,
+      "wind_speed_max": 17.1
+    },
+    "explanation": "Strong wind conditions (10.8–17.1 m/s / Beaufort 6+) rapidly strip humid boundary layers and buffet foliage.",
+    "possible_crop_consequence": "Marginal leaf tearing, abrasive rubbing between foliage, and rapid drying of exposed topsoil.",
+    "actions": [
+      "Verify that stake ties on tall crops (e.g. tomatoes, peppers) are secure without strangling stems",
+      "Postpone fine-droplet foliar spraying until wind drops below 4.5 m/s (10 mph) to avoid drift",
+      "Check root-zone moisture as wind accelerates soil and canopy moisture loss"
+    ],
+    "limitations": "Topography and row orientation relative to prevailing winds dictate localized exposure.",
+    "source": "University Extension Spray Drift Management & Crop Wind Protection Protocols"
+  },
+  {
+    "id": "cold_stress_high",
+    "hazard": "cold_stress",
+    "severity": "HIGH",
+    "conditions": {
+      "temperature_max": 0.0
+    },
+    "explanation": "Sub-zero freezing temperatures (≤0°C) cause ice crystal formation within plant intercellular spaces.",
+    "possible_crop_consequence": "Cellular rupture, rapid frost necrosis of foliage, stem splitting, and plant death in frost-sensitive crops.",
+    "actions": [
+      "Deploy protective thermal blankets, frost cloths, or floating row covers before nightfall",
+      "Avoid pruning, cultivating, or fertilizing frost-damaged plants immediately; wait until warm weather resumes",
+      "Ensure soil was moist prior to freeze, as moist soil holds significantly more latent heat than dry soil"
+    ],
+    "limitations": "Cold tolerance varies dramatically: frost-hardy brassicas tolerate freezing, while solanaceous crops suffer irreversible injury.",
+    "source": "FAO Frost Protection: Fundamentals, Practice and Economics"
+  },
+  {
+    "id": "cold_stress_moderate",
+    "hazard": "cold_stress",
+    "severity": "MODERATE",
+    "conditions": {
+      "temperature_min": 0.1,
+      "temperature_max": 4.0
+    },
+    "explanation": "Near-freezing temperatures (0°C–4°C) slow enzymatic and photosynthetic activity in warm-season crops.",
+    "possible_crop_consequence": "Chilling injury, leaf purpling due to impaired phosphorus uptake, reduced root water absorption, and growth stunting.",
+    "actions": [
+      "Erect temporary row covers or low tunnels over sensitive warm-season crops (tomato, pepper, squash)",
+      "Reduce irrigation frequency during cold periods to avoid cold, waterlogged root zones",
+      "Monitor morning dew for localized frost formation in low-lying microclimate depressions"
+    ],
+    "limitations": "Chilling thresholds apply primarily to warm-season solanaceous and cucurbit crops.",
+    "source": "Cornell Cooperative Extension Cold Weather Management"
+  },
+  {
+    "id": "dry_conditions",
+    "hazard": "dry_conditions",
+    "severity": "MODERATE",
+    "conditions": {
+      "humidity_max": 30,
+      "temperature_min": 28.0
+    },
+    "explanation": "Low relative humidity (≤30% RH) combined with warm temperatures elevates the atmospheric vapor pressure deficit (VPD).",
+    "possible_crop_consequence": "High plant transpiration rate, rapid surface soil drying, and mid-day stomatal closure reducing photosynthetic intake.",
+    "actions": [
+      "Check root-zone soil moisture depth and irrigate before crops enter irreversible wilt stress",
+      "Maintain or replenish organic mulch layers (straw, leaf litter) to suppress surface soil moisture evaporation",
+      "Monitor shallow-rooted crops for heat and drought stress symptoms during peak solar radiation"
+    ],
+    "limitations": "Crop drought vulnerability is heavily determined by rooting depth and soil organic matter content.",
+    "source": "FAO Irrigation and Drainage Paper 56 (Crop Evapotranspiration)"
+  },
+  {
+    "id": "normal_conditions",
+    "hazard": "normal_conditions",
+    "severity": "LOW",
+    "conditions": {},
+    "explanation": "Current ambient temperature, humidity, wind, and moisture conditions are within balanced, non-extreme agronomic ranges.",
+    "possible_crop_consequence": "Environmental parameters present minimal weather-related abiotic stress to established crops.",
+    "actions": [
+      "Continue standard routine crop scouting and preventative field hygiene",
+      "Maintain regular crop irrigation schedules tailored to current seasonal requirements",
+      "Monitor localized microclimates inside dense crop canopies as regional weather shifts"
+    ],
+    "limitations": "Regional weather observations provide baseline ambient context; specific canopy microclimates may vary.",
+    "source": "Standard Agricultural Extension Agronomic Best Practices"
+  }
+]
+

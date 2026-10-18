@@ -43,6 +43,7 @@ serviceAccountKey.json
 *.sqlite3
 agroai.db
 data/
+!backend/app/data/
 uploads/
 storage/
 *.log
@@ -61,6 +62,7 @@ eggs/
 .eggs/
 lib/
 lib64/
+!frontend/lib/
 parts/
 sdist/
 var/

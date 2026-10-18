@@ -92,9 +92,16 @@ class Settings(BaseSettings):
     
     # Upload limits
     MAX_IMAGE_SIZE_BYTES: int = 15 * 1024 * 1024  # 15MB
-    ALLOWED_EXTENSIONS: set = {".jpg", ".jpeg", ".png", ".webp"}
+    ALLOWED_EXTENSIONS: List[str] = [".jpg", ".jpeg", ".png", ".webp"]
+    
+    # OpenWeather API Configuration (Backend-only, never expose to client)
+    OPENWEATHER_API_KEY: Optional[str] = None
+    WEATHER_CACHE_TTL_SECONDS: int = 600  # 10 minutes cache TTL per OpenWeather update guidelines
 
-    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
+    model_config = SettingsConfigDict(
+        env_file=(".env", "backend/.env", os.path.join(PROJECT_ROOT, ".env"), os.path.join(BACKEND_DIR, ".env")),
+        extra="ignore"
+    )
 
     @model_validator(mode="after")
     def resolve_all_paths(self):

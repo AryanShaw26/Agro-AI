@@ -10,6 +10,7 @@ import SymptomsCard from '@/components/prediction/SymptomsCard';
 import PreventionCard from '@/components/prediction/PreventionCard';
 import TreatmentCard from '@/components/prediction/TreatmentCard';
 import GradCamCard from '@/components/prediction/GradCamCard';
+import WeatherSection from '@/components/weather/WeatherSection';
 import { PredictionResult } from '@/types';
 
 export default function ScanPage() {
@@ -74,12 +75,22 @@ export default function ScanPage() {
 
       {/* Primary Content: Upload vs Result Bento Dashboard */}
       {!prediction ? (
-        <div className="max-w-3xl mx-auto">
-          <LeafUpload
-            onPredictionComplete={handlePredictionComplete}
-            onAnalysisStart={handleAnalysisStart}
-            onError={handleError}
-          />
+        <div className="space-y-10">
+          <div className="max-w-3xl mx-auto">
+            <LeafUpload
+              onPredictionComplete={handlePredictionComplete}
+              onAnalysisStart={handleAnalysisStart}
+              onError={handleError}
+            />
+          </div>
+
+          {/* Pre-scan Ambient Environmental Context */}
+          <div className="max-w-5xl mx-auto pt-6 border-t border-[rgba(28,35,31,0.06)]">
+            <WeatherSection
+              customBannerText="Current ambient environmental conditions around you. Review local microclimate factors before screening."
+              showTitle={true}
+            />
+          </div>
         </div>
       ) : (
         /* Bento Result Dashboard (PRD Section 17 & 18) */
@@ -139,6 +150,9 @@ export default function ScanPage() {
               safetyNotes={prediction.knowledge.safety_notes}
             />
           </div>
+
+          {/* 5. Environmental Weather Intelligence (Independent Advisory Layer) */}
+          <WeatherSection />
         </div>
       )}
     </div>
