@@ -150,7 +150,7 @@ export default function HomePage() {
             <p className="text-xs text-[#6B756F]">Production Vision Backbone</p>
           </div>
           <div className="space-y-1">
-            <span className="text-2xl font-extrabold text-[#1F694B]">99.58%</span>
+            <span className="text-2xl font-extrabold text-[#1F694B]">99.72%</span>
             <p className="text-xs text-[#6B756F]">Benchmark Accuracy</p>
           </div>
           <div className="space-y-1">
