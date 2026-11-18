@@ -32,15 +32,15 @@ export default function AboutPage() {
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
           <div className="p-4 rounded-2xl bg-[#F7F5EE] border border-[rgba(28,35,31,0.06)] space-y-1">
-            <span className="text-2xl font-extrabold text-[#1F694B]">99.58%</span>
+            <span className="text-2xl font-extrabold text-[#1F694B]">99.72%</span>
             <span className="text-xs text-[#6B756F] block">Test Accuracy</span>
           </div>
           <div className="p-4 rounded-2xl bg-[#F7F5EE] border border-[rgba(28,35,31,0.06)] space-y-1">
-            <span className="text-2xl font-extrabold text-[#1F694B]">99.36%</span>
+            <span className="text-2xl font-extrabold text-[#1F694B]">99.54%</span>
             <span className="text-xs text-[#6B756F] block">Macro F1 Score</span>
           </div>
           <div className="p-4 rounded-2xl bg-[#F7F5EE] border border-[rgba(28,35,31,0.06)] space-y-1">
-            <span className="text-2xl font-extrabold text-[#1F694B]">99.52%</span>
+            <span className="text-2xl font-extrabold text-[#1F694B]">99.55%</span>
             <span className="text-xs text-[#6B756F] block">Validation F1</span>
           </div>
           <div className="p-4 rounded-2xl bg-[#F7F5EE] border border-[rgba(28,35,31,0.06)] space-y-1">
