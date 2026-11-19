@@ -45,7 +45,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Database className="w-3.5 h-3.5 text-[#2E8B67]" />
-                <span>Test Accuracy: 99.58%</span>
+                <span>Test Accuracy: 99.72%</span>
               </li>
               <li>Grad-CAM Layer: features.7</li>
               <li>Resolution: 384×384 RGB</li>

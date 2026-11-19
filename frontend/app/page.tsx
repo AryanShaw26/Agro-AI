@@ -68,7 +68,7 @@ export default function HomePage() {
 
               <div className="flex items-center gap-6 text-xs text-[#6B756F] pt-2">
                 <span className="flex items-center gap-1.5 text-[#1F694B] font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-[#2E8B67]" /> 99.43% Test Accuracy
+                  <CheckCircle2 className="w-4 h-4 text-[#2E8B67]" /> 99.72% Test Accuracy
                 </span>
                 <span>•</span>
                 <span className="flex items-center gap-1.5 text-[#1F694B] font-medium">
